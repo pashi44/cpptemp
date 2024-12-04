@@ -4,9 +4,14 @@
 #include <iostream>
 #include <string>
 
+class abstract
+{
+    virtual void showDetails() const = 0;
+};
+
 // BasePerson class definition
 template <typename T, typename S, typename K>
-class BasePerson
+class BasePerson : abstract
 {
 private:
     T age;
@@ -19,6 +24,9 @@ public:
     T getage() const;
     S getname() const;
     K getoccupation() const;
+
+    void showDetails() const override;
+
     virtual ~BasePerson() = default; // Virtual destructor for polymorphism
 };
 
@@ -31,6 +39,8 @@ private:
 
 public:
     ExtendedBasePerson(const T &age, const S &name, const K &occupation, const J &gender); // Constructor should take by value, not by reference
+    void showDetails() const override;
+
     J getGender() const;
 };
 
@@ -43,6 +53,8 @@ private:
 
 public:
     PersonOne(const T &age, const S &name, const K &occupation, const J &gender, const L &affair); // Constructor should take by value, not by reference
+    void showDetails() const override;
+
     L getaffair() const;
 };
 

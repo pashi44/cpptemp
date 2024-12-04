@@ -19,5 +19,10 @@ int main()
 
     );
 
+    basep.showDetails();
+    std::cout
+        << "objects are " << basep.getage()
+        << std::endl;
+
     return 0;
 }
