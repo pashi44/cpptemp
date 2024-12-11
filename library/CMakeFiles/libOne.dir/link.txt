@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC   -Wall  -Werror -std=c++14 -shared -Wl,-soname,liblibOne.so -o liblibOne.so CMakeFiles/libOne.dir/libOne.cpp.o CMakeFiles/libOne.dir/PersonOne.cpp.o

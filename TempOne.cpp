@@ -1,28 +1,41 @@
 #include <iostream>
-#include "libOne.hpp"
+// #include "libOne.hpp"
+#include <memory>
+
 #include <string>
 #include "PersonOne.hpp"
-
+#include "Destructor.hpp"
 using namespace std;
+
 int main()
+
 {
+    // {
+    // Abst *k = new Without<int, std::string>(27);
+    // delete k;
+    // }
     //
-    // LibOne<int, std::string> m = LibOne<int, std::string>(28, "prashanth");
-    // std::cout << "age is " << m.getName() << std::endl;
+    // {
     //
-    // LibOne<float, int> k = LibOne<float, int>(22.3, 256);
-    // std::cout << "age is " << k.getName() << std::endl;
+    // NonAbst *nonAbsObject = new Without<int, void>(1296);
     //
+    // delete nonAbsObject;    // }
 
-    BasePerson<int, std::string, std::string> basep = BasePerson<int, std::string, std::string>(
-        29, "prashanth", "programmer"
+    /* initlaise unwanted  class   constructors  and   may  cause mamory  overhreads
 
-    );
+    better  to use smart  pointers
 
-    basep.showDetails();
-    std::cout
-        << "objects are " << basep.getage()
-        << std::endl;
 
-    return 0;
+    */
+
+    // usinque pointer delets when it does out of scope
+
+    // std::unique_ptr<Without<int, void>> m(new Without<int, void>(1233));
+    // or
+
+    std::unique_ptr<Without<int, void>> m;
+    m = make_unique<Without<int, void>>(1296, funcptrobj);
+    int recie = m->getAttributes();
+
+    std::cout << recie << std::endl;
 }
