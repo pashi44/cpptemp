@@ -37,13 +37,14 @@ class Without : public Abst, public NonAbst
 {
 private:
     T getattr;
-    std::function<S(void *)> funcptr;
+    std::function<S(void *)>   funcptr;
 
 public:
-    Without(const T &name, const std::function<S(void *)> &funcptr = nullptr);
+    Without(const T &name,  const  std::function<S(void *)>  &funcptr );
     ~Without();
     T getAttributes() const;
 
+void callfunction(void*);
     virtual void show() override;
 };
 // template classWithout<int, std::string>;
@@ -53,10 +54,16 @@ Without<T, S>::Without(const T &name, const std::function<S(void *)> &funcptrref
 {
     getattr = name;
     std::cout << "constructor initalised   from derrieved class:  \t" << getattr << std::endl;
+funcptr =  (std::function<S(void*)>) funcptrref;
 }
 template <typename T, typename S>
 Without<T, S>::~Without()
 {
+
+    if(funcptr){
+        delete funcptr;
+        funcptr = nullptr;
+    }
     std::cout << "destructor initalised   fro m derrieved class:  \t" << getattr << std::endl;
 }
 template <typename T, typename S>
@@ -73,5 +80,20 @@ void Without<T, S>::show()
 
     std::cout << "overriden method from" << std::endl;
 }
+template <typename T, typename S>
+void Without<T,S>::callfunction(void *param){
+if(funcptr)
+funcptr(nullptr);
+
+}
+void callablefunction(void *){
+
+std::cout<< "called fucntion pointe  ffrom clas" <<std::endl;
+
+
+
+}
+
+
 
 #endif
