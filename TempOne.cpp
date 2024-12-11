@@ -34,7 +34,7 @@ int main()
     // or
 
     std::unique_ptr<Without<int, void>> m;
-    m = make_unique<Without<int, void>>(1296, funcptrobj);
+    m = make_unique<Without<int, void>>(1296);
     int recie = m->getAttributes();
 
     std::cout << recie << std::endl;

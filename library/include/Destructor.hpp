@@ -74,8 +74,4 @@ void Without<T, S>::show()
     std::cout << "overriden method from" << std::endl;
 }
 
-void funcptrobj(void *)
-{
-}
-
 #endif
