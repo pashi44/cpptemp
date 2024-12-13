@@ -15,7 +15,9 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh '''#! /bin/bash
+        sh '''
+        
+        #! /bin/bash
 
 
 
