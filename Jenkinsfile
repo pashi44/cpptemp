@@ -1,12 +1,23 @@
 pipeline {
+
   agent any
   stages {
     stage('build') {
       steps {
         sh '''
 
+  agent {
+    node {
+      label 'mac'
+    }
 
-#!/bin/bash
+  }
+  stages {
+    stage('build') {
+      steps {
+        sh '''#! /bin/bash
+
+
 
 # Define the directory name
 BUILD_DIR="build"
