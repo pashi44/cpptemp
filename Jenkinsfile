@@ -1,23 +1,14 @@
 pipeline {
+    agent any
 
-  agent any
-  stages {
-    stage('build') {
-      steps {
-        sh '''
-
-  agent {
-    node {
-      label 'mac'
-    }
-
-  }
-  stages {
-    stage('build') {
-      steps {
-        sh '''
-        
-        #! /bin/bash
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    // Run the build command
+                    sh '''
+           
+  #! /bin/bash
 
 
 
@@ -52,8 +43,8 @@ else
     exit 1
 fi
 '''
-      }
+        }
     }
+}
 
-  }
 }
