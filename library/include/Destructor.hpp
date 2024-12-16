@@ -60,10 +60,7 @@ template <typename T, typename S>
 Without<T, S>::~Without()
 {
 
-    if(funcptr){
-        delete funcptr;
-        funcptr = nullptr;
-    }
+    
     std::cout << "destructor initalised   fro m derrieved class:  \t" << getattr << std::endl;
 }
 template <typename T, typename S>

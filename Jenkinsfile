@@ -47,4 +47,17 @@ fi
     }
 }
 
+  post {
+        success {
+            echo 'Build completed successfully!'
+        }
+        failure {
+            echo 'Build failed. Check the logs for details.'
+        }
+    }
+
+
 }
+
+
+

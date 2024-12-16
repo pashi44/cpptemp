@@ -34,7 +34,7 @@ int main()
     // or
 {
     std::unique_ptr<Without<int, void>> m;
-    m = make_unique<Without<int, void>>(1296,callablefunction);
+    m = make_unique<Without<int, void >>(1296,callablefunction);
     int recie = m->getAttributes();
 m->callfunction(nullptr);
 
