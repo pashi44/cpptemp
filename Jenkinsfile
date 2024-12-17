@@ -21,7 +21,7 @@ url :  'git@github.com:pashi44/cpptemp.git'
                     // Run the build command
                     sh '''
         
-./scripr.sh
+./script.sh
 
    
 '''
