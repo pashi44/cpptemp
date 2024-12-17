@@ -1,7 +1,6 @@
 #! /bin/bash
 
 
-#!/bin/bash
 
 # Define the directory name
 BUILD_DIR="build"
