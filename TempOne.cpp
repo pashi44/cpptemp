@@ -4,41 +4,28 @@
 
 #include <string>
 #include "PersonOne.hpp"
+#include "Reference.hpp"
 #include "Destructor.hpp"
 using namespace std;
 
 int main()
 
 {
+    //
     // {
-    // Abst *k = new Without<int, std::string>(27);
-    // delete k;
+    // std::unique_ptr<Without<int, void>> m;
+    // m = make_unique<Without<int, void>>(1296, callablefunction);
+    // int recie = m->getAttributes();
+    // m->callfunction(nullptr);
     // }
-    //
-    // {
-    //
-    // NonAbst *nonAbsObject = new Without<int, void>(1296);
-    //
-    // delete nonAbsObject;    // }
 
-    /* initlaise unwanted  class   constructors  and   may  cause mamory  overhreads
+    Reference<string> strObj = Reference<string>("this summer gonna hurt");
+    cout << strObj.getObject();
 
-    better  to use smart  pointers
+    {
 
+        unique_ptr<Reference<int>> k = make_unique<Reference<int>>(32);
 
-    */
-
-    // usinque pointer delets when it does out of scope
-
-    // std::unique_ptr<Without<int, void>> m(new Without<int, void>(1233));
-    // or
-{
-    std::unique_ptr<Without<int, void>> m;
-    m = make_unique<Without<int, void >>(1296,callablefunction);
-    int recie = m->getAttributes();
-m->callfunction(nullptr);
-
-}
-
-
+        cout << k->getObject() << endl;
+    }
 }

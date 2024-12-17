@@ -9,8 +9,9 @@ set(CMAKE_CXX_FLAGS "-W")
 set(CMAKE_C_FLAGS "-w")
 
 add_subdirectory(library)
+add_subdirectory(referenceLibrary)
 
 add_executable(TempOne "./TempOne.cpp")
 
 # set(SOURCES "./TempOne.cpp" "")
-target_link_libraries(TempOne PUBLIC libOne)
+target_link_libraries(TempOne PUBLIC libOne reflib)
