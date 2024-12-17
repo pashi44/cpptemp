@@ -6,6 +6,8 @@ stage('Checkout'){
 steps{
 
 echo "cloning repo  fro m  branch \n"
+
+deleteDir()
 git branch : 'smartpointers',
 url :  'git@github.com:pashi44/cpptemp.git'
 
@@ -20,7 +22,7 @@ url :  'git@github.com:pashi44/cpptemp.git'
                 script {
                     // Run the build command
                     sh '''
-        
+ chmod +x script.sh
 ./script.sh
 
    
@@ -40,6 +42,7 @@ url :  'git@github.com:pashi44/cpptemp.git'
 
 
 }
+
 
 
 
