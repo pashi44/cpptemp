@@ -1,149 +1,0 @@
-Script started on 2024-12-16 17:04:52-06:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
-[?2004h]0;hadoop@r2: ~/cpptemplates[01;32mhadoop@r2[00m:[01;34m~/cpptemplates[00m$ [K]0;hadoop@r2: ~/cpptemplates[01;32mhadoop@r2[00m:[01;34m~/cpptemplates[00m$ [K]0;hadoop@r2: ~/cpptemplates[01;32mhadoop@r2[00m:[01;34m~/cpptemplates[00m$ e[Kvi [7mpipeline {[27m
-[7m    agent any // Use any available agent or specify one like 'docker' or 'label'[27m
-[7m    [27m
-[7m    stages {[27m
-[7m        stage('Build') {[27m
-[7m            steps {[27m
-[7m                echo 'Starting the build process...'[27m
-[7m                [27m
-[7m                // Example build commands[27m
-[7m                script {[27m
-[7m                    // For a C-based project[27m
-[7m                    echo 'Running make clean...'[27m
-[7m                    sh 'make clean' // Cleans up previous build artifacts[27m
-[7m                    echo 'Running make build...'[27m
-[7m                    sh 'make build' // Builds the project[27m
-[7m                    [27m
-[7m                    // Optional: Archive build artifacts[27m
-[7m                    echo 'Archiving artifacts...'[27m
-[7m                    archiveArtifacts artifacts: '**/build/**', allowEmptyArchive: true[27m
-[7m                }[27m
-[7m            }[27m
-[7m        }[27m
-[7m    }[27m
-[7m    [27m
-[7m    post {[27m
-[7m        success {[27m
-[7m            echo 'Build completed successfully!'[27m
-[7m        }[27m
-[7m        failure {[27m
-[7m            echo 'Build failed. Check the logs for details.'[27m
-[7m        }[27m
-[7m    }[27m
-[7m}[27m
-[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cpipeline {
-    agent any // Use any available agent or specify one like 'docker' or 'label'
-    
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Starting the build process...'
-                
-                // Example build commands
-                script {
-                    // For a C-based project
-                    echo 'Running make clean...'
-                    sh 'make clean' // Cleans up previous build artifacts
-                    echo 'Running make build...'
-                    sh 'make build' // Builds the project
-                    
-                    // Optional: Archive build artifacts
-                    echo 'Archiving artifacts...'
-                    archiveArtifacts artifacts: '**/build/**', allowEmptyArchive: true
-                }
-            }
-        }
-    }
-    
-    post {
-        success {
-            echo 'Build completed successfully!'
-        }
-        failure {
-            echo 'Build failed. Check the logs for details.'
-        }
-    }
-}
- ^C[?2004l[?2004h[?2004l
-[?2004h]0;hadoop@r2: ~/cpptemplates[01;32mhadoop@r2[00m:[01;34m~/cpptemplates[00m$ sudo  vi Jenkinsfile 
-[?2004l[sudo] password for hadoop: 
-[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?1004h[1;43r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[43;1H[97m[41mE325: ATTENTION[m
-Found a swap file by the name ".Jenkinsfile.swp"
-[10Cowned by: root   dated: Fri Dec 13 22:06:58 2024
-[9Cfile name: /home/hadoop/cpptemplates/Jenkinsfile
-[10Cmodified: YES
-[9Cuser name: root   host name: r2
-[8Cprocess ID: 32954
-While opening file "Jenkinsfile"
-[13Cdated: Mon Dec 16 17:01:56 2024
-      NEWER than swap file!
-
-(1) Another program may be editing the same file.  If this is the case,
-    be careful not to end up with two different instances of the same
-    file when making changes.  Quit, or continue with caution.
-(2) An edit session for this file crashed.
-    If this is the case, use ":recover" or "vim -r Jenkinsfile"
-    to recover the changes (see ":help recovery").
-    If you did this already, delete the swap file ".Jenkinsfile.swp"
-    to avoid this message.
-
-[32mSwap file ".Jenkinsfile.swp" already exists![m
-[32m[O]pen Read-Only, (E)dit anyway, (R)ecover, (D)elete it, (Q)uit, (A)bort: [?25h[m[43;1H[K[?25l[43;1H"Jenkinsfile" 53L, 925B[2;1H▽[6n[2;1H  [3;1HPzz\[0%m[6n[3;1H           [1;1H[>c]10;?]11;?[2;1H[K[3;1H[K[4;1H[31m# Define the directory name
-BUILD_DIR="build"
-
-# Check if the directory exists, if not, create it
-if [ ! -d "$BUILD_DIR" ]; then
-    echo "Directory [m[35m\'[m[31m$BUILD_DIR[m[35m\'[m[31m does not exist. Creating it now."
-    mkdir "$BUILD_DIR"
-else
-    echo "Directory [m[35m\'[m[31m$BUILD_DIR[m[35m\'[m[31m already exists."
-fi
-
-# Change to the build directory
-cd "$BUILD_DIR" || { echo "Failed to enter directory [m[35m\'[m[31m$BUILD_DIR[m[35m\'[m[31m"; exit 1; }[21;1Hcmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug -S  .. -B .[m[22;1H[K[23;1H[31m# Build the project[m[23;20H[K[24;1H[31mecho "Building the project..."[m[24;31H[K[25;1H[31mmake[m[25;10H[K[26;11H[K[27;1H[31m# Check if make was successful[m[27;31H[K[28;1H[31mif [ $? -eq 0 ]; then[m[28;22H[K[29;1H[31m    echo "Build completed successfully."
-else[m[30;14H[K[31;1H[31m    echo "Build failed. Check the output for errors."
-    exit 1
-fi[m[33;3H[K[34;1H[31m'''[m[34;5H[K[35;5H    }[35;10H[K[36;1H    }[36;6H[K[37;1H}[37;5H[K[38;5H[K[39;1H}[39;5H[K[40;5H[K[42;1H[K[43;173H53,0-1[8CBot[42;1H[?25h[?4mP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\P$q q\[?12$p[?25l[43;163H0[42;1H[43;164H/[42;1H[43;165H0[42;1H[43;166Ha[42;1H[43;167H0[42;1H[43;168Ha[42;1H[43;169H/[42;1H[43;170H2[42;1H[43;171H4[42;1H[43;172H2[42;1H[43;163H          [42;1H[27m[23m[29m[m[H[2J[4;1H[95m# Define the directory name
-BUILD_DIR="build"
-
-# Check if the directory exists, if not, create it
-if [ ! -d "$BUILD_DIR" ]; then
-    echo "Directory [m[38;5;224m\'[m[95m$BUILD_DIR[m[38;5;224m\'[m[95m does not exist. Creating it now."
-    mkdir "$BUILD_DIR"
-else
-    echo "Directory [m[38;5;224m\'[m[95m$BUILD_DIR[m[38;5;224m\'[m[95m already exists."
-fi
-
-# Change to the build directory
-cd "$BUILD_DIR" || { echo "Failed to enter directory [m[38;5;224m\'[m[95m$BUILD_DIR[m[38;5;224m\'[m[95m"; exit 1; }[21;1Hcmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug -S  .. -B .
-
-# Build the project
-echo "Building the project..."
-make
-
-# Check if make was successful
-if [ $? -eq 0 ]; then
-    echo "Build completed successfully."
-else
-    echo "Build failed. Check the output for errors."
-    exit 1
-fi
-'''[m[35;9H}
-    }
-}
-
-}[43;173H53,0-1[8CBot"Jenkinsfile" 53L, 925B[42;1H[?25h[?25l[43;163H^M[42;1H[43;163H  [42;1H[?25h[?25l[43;163H~@k[42;1H[43;163H   [42;1H[?25h[?25l[43;163H~@k[42;1H[43;163H   [41;1H[43;174H2[41;1H[?25h[?25l[43;163H~@k[41;1H[43;163H   [40;1H[43;174H1[40;1H[?25h[?25l[43;163H~@k[40;1H[43;163H   [39;1H[43;174H0,1  [39;1H[?25h[?25l[43;163H~@k[39;1H[43;163H   [38;1H[43;173H49,0-1[38;1H[?25h[?25l[43;163H~@k[38;1H[43;163H   [37;1H[43;174H8,1  [37;1H[?25h[?25l[43;163H~@k[37;1H[43;163H   [36;1H[43;174H7[36;1H[?25h[?25l[43;163H~@k[36;1H[43;163H   [35;1H[43;174H6[35;1H[?25h[?25l[43;163H~@k[35;1H[43;163H   [34;1H[43;174H5[34;1H[?25h[?25l[43;163H~@k[34;1H[43;163H   [33;1H[43;174H4[33;1H[?25h[?25l[43;163H~@k[33;1H[43;163H   [32;1H[43;174H3[32;1H[?25h[?25l[43;163H~@k[32;1H[43;163H   [31;1H[43;174H2[31;1H[?25h[?25l[43;163H~@k[31;1H[43;163H   [30;1H[43;174H1[30;1H[?25h[?25l[43;163H~@k[30;1H[43;163H   [29;1H[43;174H0[29;1H[?25h[?25l[43;163H~@k[29;1H[43;163H   [28;1H[43;173H39[28;1H[?25h[?25l[43;163H~@k[28;1H[43;163H   [27;1H[43;174H8[27;1H[?25h[?25l[43;163H~@k[27;1H[43;163H   [26;1H[43;174H7,0-1[26;1H[?25h[?25l[43;163H~@k[26;1H[43;163H   [25;1H[43;174H6,1  [25;1H[?25h[?25l[43;163H~@k[25;1H[43;163H   [24;1H[43;174H5[24;1H[?25h[?25l[43;163H~@k[24;1H[43;163H   [23;1H[43;174H4[23;1H[?25h[?25l[43;163H~@k[23;1H[43;163H   [22;1H[43;174H3,0-1[22;1H[?25h[?25l[43;163H~@k[22;1H[43;163H   [21;1H[43;174H2,1  [21;1H[?25h[?25l[43;163H~@k[21;1H[43;163H   [20;1H[43;174H1,0-1[20;1H[?25h[?25l[43;163H~@k[20;1H[43;163H   [19;1H[43;174H0[19;1H[?25h[?25l[43;163H~@k[19;1H[43;163H   [18;1H[43;173H29[18;1H[?25h[?25l[43;163H~@k[18;1H[43;163H   [17;1H[43;174H8[17;1H[?25h[?25l[43;163H~@k[17;1H[43;163H   [16;1H[43;174H7,1  [16;1H[?25h[?25l[43;163H~@k[16;1H[43;163H   [15;1H[43;174H6[15;1H[?25h[?25l[43;163H~@k[15;1H[43;163H   [14;1H[43;174H5,0-1[14;1H[?25h[?25l[43;163H~@k[14;1H[43;163H   [13;1H[43;174H4,1  [13;1H[?25h[?25l[43;163H~@k[13;1H[43;163H   [12;1H[43;174H3[12;1H[?25h[?25l[43;163H~@k[12;1H[43;163H   [11;1H[43;174H2[11;1H[?25h[?25l[43;163H~@k[11;1H[43;163H   [10;1H[43;174H1[10;1H[?25h[?25l[43;163H~@k[10;1H[43;163H   [9;1H[43;174H0[9;1H[?25h[?25l[43;163H~@k[9;1H[43;163H   [8;1H[43;173H19[8;1H[?25h[?25l[43;163H~@k[8;1H[43;163H   [7;1H[43;174H8[7;1H[?25h[?25l[43;163H~@k[7;1H[43;163H   [6;1H[43;174H7,0-1[6;1H[?25h[?25l[43;163H~@k[6;1H[43;163H   [6;1H[1;42r[1;1H[L[1;43r[1;1H[95m  #! /bin/bash[m[43;1H[K[43;173H16,1[10C90%[6;1H[?25h[?25l[43;163H~@k[6;1H[43;163H   [6;1H[1;42r[1;1H[L[1;43r[1;1H[95m           [m[43;173H[K[43;173H15,1[10C81%[6;1H[?25h[?25l[43;163H~@k[6;1H[43;163H   [6;1H[1;42r[1;1H[L[1;43r[1;21Hsh [95m'''[m[43;173H[K[43;173H14,0-1[8C72%[6;1H[?25h[?25l[43;163H~@k[6;1H[43;163H   [6;1H[1;42r[1;1H[L[1;43r[1;21H[96m// Run the build command[m[43;173H[K[43;173H13,0-1[8C63%[6;1H[?25h[?25l[43;163H~@k[6;1H[43;163H   [6;1H[1;42r[1;1H[L[1;43r[1;17Hscript {[43;173H[K[43;173H12,0-1[8C54%[6;1H[?25h[?25l[43;163H~@k[6;1H[43;163H   [6;1H[1;42r[1;1H[L[1;43r[1;13Hsteps {[43;173H[K[43;173H11,1[10C45%[6;1H[?25h[?25l[43;163H~@k[6;1H[43;163H   [6;1H[1;42r[1;1H[L[1;43r[1;9Hstage([95m'Build'[m) {[43;173H[K[43;173H10,1[10C36%[6;1H[?25h[?25l[43;163H~@k[6;1H[43;163H   [6;1H[1;42r[1;1H[L[1;43r[1;5Hstages {[43;173H[K[43;173H9,1[11C27%[6;1H[?25h[?25l[43;163H~@k[6;1H[43;163H   [6;1H[1;42r[1;1H[L[1;43r[43;173H[K[43;173H8,1[11C18%[6;1H[?25h[?25l[43;163H~@k[6;1H[43;163H   [6;1H[1;42r[1;1H[L[1;43r[1;5Hagent [1m[96many[m[43;173H[K[43;173H7,1[12C9%[6;1H[?25h[?25l[43;163H~@k[6;1H[43;163H   [6;1H[1;42r[1;1H[L[1;43r[1;1Hpipeline {[43;173H[K[43;173H6,1[11CTop[6;1H[?25h[?25l[43;163H~@k[6;1H[43;163H   [5;1H[43;173H5[5;1H[?25h[?25l[43;163H~@k[5;1H[43;163H   [4;1H[43;173H4[4;1H[?25h[?25l[43;163H~@k[4;1H[43;163H   [3;1H[43;173H3,0-1[3;1H[?25h[?25l[43;163H~@k[3;1H[43;163H   [2;1H[43;173H2,1  [2;1H[?25h[?25l[43;163H~@k[2;1H[43;163H   [1;1H[43;173H1[1;1H[?25h[?25l[43;163H~@k[1;1H[43;163H   [1;1H[?25h[?25l[43;163H~@k[1;1H[43;163H   [1;1H[?25h[?25l[43;163H~@k[1;1H[43;163H   [1;1H[?25h[?25l[43;163H~@k[1;1H[43;163H   [1;1H[?25h[?25l[43;163H~@k[1;1H[43;163H   [1;1H[?25h[?25l[43;163H~@k[1;1H[43;163H   [2;1H[43;173H2[2;1H[?25h[?25l[43;163H~@k[2;1H[43;163H   [3;1H[43;173H3,0-1[3;1H[?25h[?25l[43;163H~@k[3;1H[43;163H   [4;1H[43;173H4,1  [4;1H[?25h[?25l[43;163H~@k[4;1H[43;163H   [5;1H[43;173H5[5;1H[?25h[?25l[43;163H~@k[5;1H[43;163H   [6;1H[43;173H6[6;1H[?25h[?25l[43;163H~@k[6;1H[43;163H   [7;1H[43;173H7[7;1H[?25h[?25l[43;163H~@k[7;1H[43;163H   [8;1H[43;173H8[8;1H[?25h[?25l[43;163H~@k[8;1H[43;163H   [9;1H[43;173H9[9;1H[?25h[?25l[43;163H~@k[9;1H[43;163H   [10;1H[43;173H10,1[10;1H[?25h[?25l[43;163H~@k[10;1H[43;163H   [11;1H[43;174H1[11;1H[?25h[?25l[43;163H~@k[11;1H[43;163H   [12;1H[43;174H2,0-1[12;1H[?25h[?25l[43;163H~@k[12;1H[43;163H   [13;1H[43;174H3[13;1H[?25h[?25l[43;163H~@k[13;1H[43;163H   [14;1H[43;174H4[14;1H[?25h[?25l[43;163H~@k[14;1H[43;163H   [15;1H[43;174H5,1  [15;1H[?25h[?25l[43;163H~@k[15;1H[43;163H   [16;1H[43;174H6[16;1H[?25h[?25l[43;163H~@k[16;1H[43;163H   [17;1H[43;174H7,0-1[17;1H[?25h[?25l[43;163H~@k[17;1H[43;163H   [18;1H[43;174H8,1  [18;1H[?25h[?25l[43;163H~@k[18;1H[43;163H   [19;1H[43;174H9[19;1H[?25h[?25l[43;163H~@k[19;1H[43;163H   [20;1H[43;173H20[20;1H[?25h[?25l[43;163H~@k[20;1H[43;163H   [21;1H[43;174H1[21;1H[?25h[?25l[43;163H~@k[21;1H[43;163H   [22;1H[43;174H2[22;1H[?25h[?25l[43;163H~@k[22;1H[43;163H   [23;1H[43;174H3[23;1H[?25h[?25l[43;163H~@k[23;1H[43;163H   [24;1H[43;174H4[24;1H[?25h[?25l[43;163H~@k[24;1H[43;163H   [25;1H[43;174H5,0-1[25;1H[?25h[?25l[43;163H~@k[25;1H[43;163H   [26;1H[43;174H6,1  [26;1H[?25h[?25l[43;163H~@k[26;1H[43;163H   [27;1H[43;174H7[27;1H[?25h[?25l[43;163H~@k[27;1H[43;163H   [28;1H[43;174H8,0-1[28;1H[?25h[?25l[43;163H~@k[28;1H[43;163H   [29;1H[43;174H9[29;1H[?25h[?25l[43;163H~@k[29;1H[43;163H   [30;1H[43;173H30[30;1H[?25h[?25l[43;163H~@k[30;1H[43;163H   [31;1H[43;174H1[31;1H[?25h[?25l[43;163H~@k[31;1H[43;163H   [32;1H[43;174H2,1  [32;1H[?25h[?25l[43;163H~@k[32;1H[43;163H   [33;1H[43;174H3,0-1[33;1H[?25h[?25l[43;163H~@k[33;1H[43;163H   [34;1H[43;174H4,1  [34;1H[?25h[?25l[43;163H~@k[34;1H[43;163H   [35;1H[43;174H5[35;1H[?25h[?25l[43;163H~@k[35;1H[43;163H   [36;1H[43;174H6[36;1H[?25h[?25l[43;163H~@k[36;1H[43;163H   [37;1H[43;174H7,0-1[37;1H[?25h[?25l[43;163H~@k[37;1H[43;163H   [37;1H[1;42r[42;1H
-[1;43r[42;1H[95m    exit 1[m[43;173H[K[43;173H38,1[11C9%[37;1H[?25h[?25l[43;163H~@k[37;1H[43;163H   [37;1H[1;42r[42;1H
-[1;43r[42;1H[95mfi[m[43;173H[K[43;173H39,1[10C18%[37;1H[?25h[?25l[43;163H~@k[37;1H[43;163H   [37;1H[1;42r[42;1H
-[1;43r[42;1H[95m'''[m[43;173H[K[43;173H40,1[10C27%[37;1H[?25h[?25l[43;163H~@k[37;1H[43;163H   [37;1H[1;42r[42;1H
-[1;43r[42;9H}[43;173H[K[43;173H41,1[10C36%[37;1H[?25h[?25l[43;163H~@k[37;1H[43;163H   [37;1H[1;42r[42;1H
-[1;43r[42;5H}[43;173H[K[43;173H42,1[10C45%[37;1H[?25h[?25l[43;163H~@k[37;1H[43;163H   [37;1H[1;42r[42;1H
-[1;43r[42;1H}[43;173H[K[43;173H43,1[10C54%[37;1H[?25h[?25l[43;163H~@k[37;1H[43;163H   [37;1H[1;42r[42;1H
-[1;43r[43;173H[K[43;173H44,1[10C63%[37;1H[?25h[?25l[43;163H~@k[37;1H[43;163H   [37;1H[1;42r[42;1H
-[1;43r[42;1H}[43;173H[K[43;173H45,1[10C72%[37;1H[?25h[?25l[43;163H~@k[37;1H[43;163H   [37;1H[1;42r[42;1H
-[1;43r[43;173H[K[43;173H46,1[10C81%[37;1H[?25h[?25l[43;163H~@k[37;1H[43;163H   [37;1H[1;42r[42;1H
-[1;43r[43;173H[K[43;173H47,1[10C90%[37;1H[?25h[?25l[43;163H~@k[37;1H[43;163H   [37;1H[1;42r[42;1H
-[1;43r[43;173H[K[43;173H48,1[10CBot[37;1H[?25h[?25l[43;163H~@k[37;1H[43;163H   [38;1H[43;174H9,0-1[38;1H[?25h[?25l[43;163H~@k[38;1H[43;163H   [39;1H[43;173H50,1  [39;1H[?25h[?25l[43;163H~@k[39;1H[43;163H   [40;1H[43;174H1,0-1[40;1H[?25h[?25l[43;163H~@k[40;1H[43;163H   [41;1H[43;174H2[41;1H[?25h[?25l[43;163H~@k[41;1H[43;163H   [42;1H[43;174H3[42;1H[?25h[?25l[43;163H~@k[42;1H[43;163H   [42;1H[?25h[?25l[43;163H~@k[42;1H[43;163H   [42;1H[?25h[?25l[43;163H~@k[42;1H[43;163H   [42;1H[?25h[?25l[43;163H~@k[42;1H[43;163H   [42;1H[?25h[?25l[43;163H~@k[42;1H[43;163H   [41;1H[43;174H2[41;1H[?25h[?25l[43;163H~@k[41;1H[43;163H   [40;1H[43;174H1[40;1H[?25h[?25l[43;163H~@k[40;1H[43;163H   [39;1H[43;174H0,1  [39;1H[?25h[?25l[43;163H~@k[39;1H[43;163H   [38;1H[43;173H49,0-1[38;1H[?25h[?25l[43;163H^M[38;1H[43;163H  [39;1H[43;173H50,1  [39;1H[?25h[?25l[43;163H^M[39;1H[43;163H  [40;1H[43;174H1,0-1[40;1H[?25h[?25l[43;163H^M[40;1H[43;163H  [41;1H[43;174H2[41;1H[?25h[?25l[43;163Hi[41;1H[43;163H [41;1H
-
-[1m-- INSERT --
