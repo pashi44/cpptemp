@@ -16,10 +16,14 @@ private:
 
 public:
     Reference(const S &obj);
-
+    Reference(const Reference<S> &a);
     virtual ~Reference();
+
+    S *name;
+
     // virtual void abstarctmethod() = 0;
-    S getObject() const;
+    Reference<S> &
+    getObject();
 };
 
 template class Reference<string>;

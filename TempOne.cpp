@@ -19,13 +19,13 @@ int main()
     // m->callfunction(nullptr);
     // }
 
-    Reference<string> strObj = Reference<string>("this summer gonna hurt");
-    cout << strObj.getObject();
+    // Reference<string> strObj = Reference<string>("this summer gonna hurt");
 
     {
 
-        unique_ptr<Reference<int>> k = make_unique<Reference<int>>(32);
-
-        cout << k->getObject() << endl;
+        Reference<int> k = Reference<int>(1296);
+        Reference<int> copy(k);
+        std::cout << *(copy.name) << std::endl;
+        std::cout << *k.name << std::endl;
     }
 }
