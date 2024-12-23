@@ -19,10 +19,10 @@ cd "$BUILD_DIR" || { echo "Failed to enter directory '$BUILD_DIR'"; exit 1; }
 
 
 
-#cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug -S  .. -B .
+cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug -S  .. -B .
 
 
-cmake  -DCMAKE_BUILD_TYPE-Debug -S .. -B .
+#cmake  -DCMAKE_BUILD_TYPE-Debug -S .. -B .
 # Build the project
 echo "Building the project..."
 make
