@@ -1,7 +1,7 @@
 #include <iostream>
 // #include "libOne.hpp"
 #include <memory>
-
+#include <list>
 #include <string.h>
 #include "PersonOne.hpp"
 #include "Reference.hpp"
@@ -9,10 +9,17 @@
 #include "ThreadOne.hpp"
 #include <stdlib.h>
 #include <sys/types.h>
+#include <vector>
+
 using namespace std;
 int main()
 
 {
 
-    cout << hex << showbase << static_cast<int32_t>((uint32_t)25 - (uint32_t)50) << endl;
+    std::string nmskes = "dasdhilaksndsa";
+    ThreadOne<int, std::string>
+
+        m{
+            12,
+            std::string("giuguguujji"), nmskes + "as"};
 }
