@@ -5,21 +5,20 @@
 #include <string.h>
 #include "PersonOne.hpp"
 #include "Reference.hpp"
+#include <MoveSemantic.hpp>
+
 // #include "Destructor.hpp"
 #include "ThreadOne.hpp"
 #include <stdlib.h>
 #include <sys/types.h>
 #include <vector>
+#include <thread>
 
 using namespace std;
+std::thread t(threadFuncion);
+
 int main()
 
 {
-
-    std::string nmskes = "dasdhilaksndsa";
-    ThreadOne<int, std::string>
-
-        m{
-            12,
-            std::string("giuguguujji"), nmskes + "as"};
+    t.join();
 }
