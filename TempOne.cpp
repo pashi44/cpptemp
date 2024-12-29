@@ -20,11 +20,16 @@ using namespace std;
 int main()
 
 {
+
+    int make = 156;
+    std::string name = "pashiasdlksd";
     try
     {
+        cout << "from  main therad\t" << ((void *)&make) << "\t" << ((void *)&name) << "\n\n\n\n"
+             << endl;
 
-        std::thread t(threadFuncion);
-
+        // ThreadOne<int, std::string> k(make, name);
+        std::thread t(threadFunction<int, std::string>, std::ref(make), std::ref(name));
         t.join();
     }
     catch (const std::runtime_error &e)
