@@ -1,39 +1,37 @@
 #ifndef __THREADONEHPP__
 #define __THREADONEHPP__
 #include <iostream>
-#include <cstdlib>
-#include <cstring>
 #include <thread>
-#include <unistd.h>
+
 template <typename T, typename S>
 class ThreadOne
 {
 private:
-    T obj1;
-    S obj2;
+    T &obj1;
+    S &obj2;
 
 public:
-    ThreadOne(T &ob1, S &ob2)
+    ThreadOne(T &ob1, S &ob2) : obj1(ob1), obj2(ob2) // Proper initialization
     {
-        obj1 = ob1;
-        obj2 = ob2;
-        cout << "Object created from  theradFucntion \n"
-             << endl;
-    };
-    void
-    operator()() const
-    {
-        cout << ((void *)&obj1) << "\t" << ((void *)&obj2) << endl;
+
+        cout
+            << "Object created from threadFunction \n"
+            << ((void *)&obj1) << '\t' << ((void *)&obj2)
+            << endl;
+        // cout
+        // << ((void *)&ob1) << '\t' << ((void *)&ob2)
+        // << endl;
     }
 
-    ThreadOne()
+    void operator()() const
     {
-        cout << "thread had beeen called \n"
-             << endl;
+        // cout << "obj1: " << obj1 << ", obj2: " << obj2 << endl;
     }
+
     ~ThreadOne() {}
 };
 #endif // ! __THREADONEHPP__
+
 struct __threadStruct
 {
     void *funcpt = nullptr;
@@ -44,16 +42,17 @@ __threadStruct paramObj;
 template <typename T, typename S>
 void threadFunction(T &obj1, S &obj2)
 {
-    ThreadOne<T, S> m(obj1, obj2);
     try
     {
-        std::thread t1(std::ref(m));
-        t1.join();
-        cout
-            << "thread waiting for the another   created " << endl;
+        ThreadOne<T, S> m(obj1, obj2); // Create ThreadOne object
+        std::thread t1(std::ref(m));   // Pass ThreadOne object by reference
+        t1.join();                     // Wait for thread to finish
+        cout << "\n\n\n"
+             << "*******************  frim **********"
+             << "Thread finished execution  from  thread fucntion" << endl;
     }
-    catch (const std::runtime_error &k)
+    catch (const std::runtime_error &e)
     {
-        std::cerr << k.what() << std::endl;
+        std::cerr << e.what() << std::endl;
     }
 }

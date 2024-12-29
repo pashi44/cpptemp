@@ -18,22 +18,18 @@
 using namespace std;
 
 int main()
-
 {
-
     int make = 156;
     std::string name = "pashiasdlksd";
+
     try
     {
-        cout << "from  main therad\t" << ((void *)&make) << "\t" << ((void *)&name) << "\n\n\n\n"
-             << endl;
-
-        // ThreadOne<int, std::string> k(make, name);
         std::thread t(threadFunction<int, std::string>, std::ref(make), std::ref(name));
         t.join();
+        cout << "From main thread: " << ((void *)&make) << "\t" << ((void *)&name) << "\n\n"
+             << endl;
     }
     catch (const std::runtime_error &e)
-
     {
         std::cerr << e.what() << std::endl;
     }
