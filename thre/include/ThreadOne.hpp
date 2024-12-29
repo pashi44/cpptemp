@@ -4,11 +4,22 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
+#include <thread>
 #include <unistd.h>
 template <typename T, class S>
 class ThreadOne
 {
-    ThreadOne() = default;
+
+public:
+    void operator()() const {}
+
+    ThreadOne()
+    {
+        cout << "thread had beeen called \n"
+             << endl;
+    }
+
+    ~ThreadOne() {}
 };
 #endif // ! __THREADONEHPP__
 
@@ -19,16 +30,27 @@ struct __threadStruct
     char *make = nullptr;
 };
 
-void threadFuncion()
+__threadStruct paramObj;
+static void threadFuncion()
 {
-    __threadStruct paramObj;
-    paramObj.make = (char *)malloc(sizeof(char) * 10);
+    ThreadOne<string, int> *k = new ThreadOne<string, int>();
+    try
+    {
 
-    strcpy(paramObj.make, "structtype");
-    std::cout
-        << paramObj.make << std::endl;
+        std::thread t1(*k);
 
-    free(paramObj.make);
+        t1.join();
+        cout
 
-    paramObj.make = nullptr;
+            << "thread waiting for the another   created " << endl;
+    }
+
+    catch (const std::runtime_error &k)
+    {
+
+        std::cerr << k.what() << std::endl;
+    }
+    delete k;
+
+    k = nullptr;
 }

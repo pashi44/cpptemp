@@ -13,12 +13,23 @@
 #include <sys/types.h>
 #include <vector>
 #include <thread>
-
+#include <stdexcept>
+#include <iostream>
 using namespace std;
-std::thread t(threadFuncion);
 
 int main()
 
 {
-    t.join();
+    try
+    {
+
+        std::thread t(threadFuncion);
+
+        t.join();
+    }
+    catch (const std::runtime_error &e)
+
+    {
+        std::cerr << e.what() << std::endl;
+    }
 }
