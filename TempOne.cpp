@@ -15,19 +15,19 @@
 #include <thread>
 #include <stdexcept>
 #include <iostream>
+
+#include <cassert>
 using namespace std;
 
 int main()
 {
-    int make = 156;
-    std::string name = "pashiasdlksd";
 
     try
     {
         std::thread t(threadFunction<int, std::string>, std::ref(make), std::ref(name));
         t.join();
-        cout << "From main thread: " << ((void *)&make) << "\t" << ((void *)&name) << "\n\n"
-             << endl;
+
+        noexcept assert(!t.joinable());
     }
     catch (const std::runtime_error &e)
     {

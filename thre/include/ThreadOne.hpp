@@ -42,11 +42,17 @@ __threadStruct paramObj;
 template <typename T, typename S>
 void threadFunction(T &obj1, S &obj2)
 {
+
+    // shared_ptr<ThreadOne<T, S>> k = make_shared<ThreadOne<T, S>>(21, std::string("asdsads"));
+
     try
     {
-        ThreadOne<T, S> m(obj1, obj2); // Create ThreadOne object
-        std::thread t1(std::ref(m));   // Pass ThreadOne object by reference
-        t1.join();                     // Wait for thread to finish
+
+        ThreadOne<T, S>
+            m(obj1, obj2);           // Create ThreadOne object
+        std::thread t1(std::ref(m)); // Pass ThreadOne object by reference
+        t1.join();
+        // Wait for thread to finish
         cout << "\n\n\n"
              << "*******************  frim **********"
              << "Thread finished execution  from  thread fucntion" << endl;
