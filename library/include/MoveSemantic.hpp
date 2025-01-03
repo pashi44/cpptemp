@@ -15,16 +15,13 @@ private:
 
 public:
     MoveSemantic() : obj1(), obj2() {}
-    explicit MoveSemantic(const S &o1, const T &o2, std::string &&nams) noexcept : obj1(o1), obj2(o2)
+    explicit MoveSemantic(const S &o1, const T &o2, std::string &&nams) noexcept : obj1(o1), obj2(std::move(nams))
     {
     }
-
-    MoveSemantic(MoveSemantic &&other) noexcept
-        : obj1(std::move(other.obj1)), obj2(std::move(other.obj2))
+    MoveSemantic(MoveSemantic &&other) noexcept : obj1(std::move(other.obj1)), obj2(std::move(other.obj2))
     {
         std::cout << "Move constructor called: Ownership transferred\n"
                   << endl;
-
         cout << other.obj1 << other.obj2 << endl;
     }
 
@@ -39,12 +36,7 @@ public:
     }
 };
 #endif // __SHAREDPOINTH__
-int make = 156;
-
-std::string name = "pashiasdlksd";
-
-MoveSemantic<int, std::string> m(make, name, "ajskdbjas");
-
-MoveSemantic<int, std::string> obj2(std::move(m));
 
 //  cast name to rvalue reference with std:;move
+// MoveSemantic<int, std::string> m(make, name, "ajskdbjas");
+// MoveSemantic<int, std::string> obj2(std::move(m));

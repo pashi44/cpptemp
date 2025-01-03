@@ -5,8 +5,7 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/referenceLibrary/include",
-                "${workspaceFolder}/smartpointers/include",
-                "${workspaceFolder}/thre/include"
+                "${workspaceFolder}/thre/include/**"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
