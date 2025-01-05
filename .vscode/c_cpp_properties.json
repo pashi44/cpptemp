@@ -4,7 +4,13 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
+<<<<<<< HEAD
                 "${workspaceFolder}/library/include"
+=======
+                "${workspaceFolder}/referenceLibrary/include",
+                "${workspaceFolder}/thre/include/**",
+                "${workspaceFolder}/iterator/include"
+>>>>>>> 7258b88 (usage o  critical sectional  fucntionality  withput RAII idom to use multiple  mutex unlocak statemets in try-catch  scopes)
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",
