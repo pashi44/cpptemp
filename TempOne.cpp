@@ -12,40 +12,43 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <unistd.h>
-
+#include <sys/wait.h>
 #include <vector>
 #include <thread>
 #include <stdexcept>
 #include <iostream>
 #include <cassert>
+#include "IterOne.hpp"
+
 using namespace std;
 using namespace threadone;
 using namespace threadplay;
 int main()
 {
-    int makme = 26;
-    std::string name = "pashi";
-    // try
-    // {
-    // Threadplay<int, std::string> m(56, "daksdasjbdajskdb");
-    // std::cout
-    // << "Addresses: obj1: " << (void *)&(m.obj1)
-    // << ", obj2: " << (void *)&(m.obj2) << endl;
-    // cout << (std::string)m.obj2 << endl;
-    // }
-    // catch (std::exception e)
-    // {
-    // std::cout << e.what() << endl;
-    //
-    //
-    // AbstarctClass *abobj = new threadplay::Threadplay<uint64_t, std::string>(233, std::string("pashi is a hacker"));
-    //
-    // abobj->getnothing();
-    //
-    // delete abobj;
 
-    // @iterator
+    pid_t pid;
+    int makme = 1296;
+    std::mutex mutexOne;
+    std::string name = "simon riely";
+    std::thread th([&]()
+                   {
+        try
+        {
+            mutexOne.lock();
+            std::cout << "Thread is executing. Protecting shared resources.\n";
+            std::cout << "Shared data: " << makme << ", " << name << std::endl;
+            if (makme   < 20)
+            {
+                throw std::runtime_error("An  assertion error occurred!");
+            }
+            mutexOne.unlock(); //  a deadlock
+        }
+        catch (const std::exception &e)
+        {
+            mutexOne.unlock(); // Ensure the mutex is unlocked in case of an exception
+            std::cerr << "Exception caught in thread: " << e.what() << std::endl;
+        } });
 
-    {
-    }
+    th.join();
+    return 0;
 }

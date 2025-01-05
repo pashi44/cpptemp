@@ -5,7 +5,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/referenceLibrary/include",
-                "${workspaceFolder}/thre/include/**"
+                "${workspaceFolder}/thre/include/**",
+                "${workspaceFolder}/iterator/include"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

@@ -37,7 +37,7 @@ namespace threadone
                 << endl;
         }
 
-        void operator()() const 
+        void operator()() const
         {
             // cout << "obj1: " << obj1 << ", obj2: " << obj2 << endl;
         }
