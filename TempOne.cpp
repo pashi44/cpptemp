@@ -21,25 +21,5 @@ auto mainThreadID = std::this_thread::get_id();
 int main()
 {
 
-    threadThreats threadManager;
-
-    // Producer thread
-    std::thread producer([&]()
-                         {
-        for (int i = 1; i <= 5; ++i) {
-            threadManager.produce_data(i, "data_" + std::to_string(i));
-            std::this_thread::sleep_for(std::chrono::milliseconds(500)); // Simulate work
-        } });
-
-    // Consumer thread
-    std::thread consumer([&]()
-                         {
-        for (int i = 1; i <= 5; ++i) {
-            threadManager.consume_data(process_function);
-        } });
-
-    producer.join();
-    consumer.join();
-
     return 0;
 }

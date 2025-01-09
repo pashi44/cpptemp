@@ -53,6 +53,7 @@ public:
     void consume_data(Function funObj)
     {
         std::unique_lock<std::mutex> lock(classmutex);
+
         cv.wait(lock, [this]()
                 { return dataready; }); // Wait until dataReady is true
         funObj(data);
@@ -63,5 +64,36 @@ void process_function(DataWrapper &protected_data)
 {
     protected_data.do_something();
 }
+// threadThreats threadManager;
+//
+// Producer thread
+//
+// std::thread producer([&]()
+//
+//  {
+//
+// for (int i = 1; i <=  5; ++i) {
+//
+// threadManager.produce_data(i, "data_" + std::to_string(i));
+//
+// std::this_thread::sleep_for(std::chrono::milliseconds(500)); // Simulate work
+//
+// } });
+//
+// Consumer thread
+//
+// std::thread consumer([&]()
+//
+//  {
+//
+// for (int i = 1; i <= 5; ++i) {
+//
+// threadManager.consume_data(process_function);
+//
+// } });
+//
+// producer.join();
+//
+// consumer.join();
 
 #endif // !  __THREADSTHREATSHPP__
