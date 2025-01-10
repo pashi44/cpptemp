@@ -12,5 +12,19 @@ add_subdirectory(iterator)
 
 add_executable(TempOne "./TempOne.cpp")
 
+#if __cplusplus >= 202002L
+    #pragma message("Compiling with C++20 or newer")
+#elif __cplusplus >= 201703L
+    #pragma message("Compiling with C++17")
+#elif __cplusplus >= 201402L
+    #pragma message("Compiling with C++14")
+#elif __cplusplus >= 201103L
+    #pragma message("Compiling with C++11")
+    #else
+    #pragma message("Compiling with a pre-C++11 version")
+#endif
+
+
+
 # set(SOURCES "./TempOne.cpp" "")
 target_link_libraries(TempOne PUBLIC libOne iter)
