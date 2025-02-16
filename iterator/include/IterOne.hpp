@@ -28,8 +28,14 @@ namespace Iterone
             obj1 = ob1;
             obj2 = ob2;
         }
+        S &getStringObject()
+        {
+            return obj2;
+        }
 
-        ~IterOne() {}
+        ~IterOne()
+        {
+        }
     };
 }
 #endif
