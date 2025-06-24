@@ -1,30 +1,67 @@
 #include <iostream>
-#include "libOne.hpp"
 #include <string>
-#include "PersonOne.hpp"
 #include <stdlib.h>
 #include <sys/types.h>
-#include "async.hpp"
 #include <chrono>
 #include <unistd.h>
 using namespace std;
-pid_t pid;
-int makme = 1296;
-auto mainThreadID = std::this_thread::get_id();
-using S = std::string;
-int main()
-{
-    std::promise<int> prom;
 
-    std::future<int> fut = prom.get_future();
+class Abstract {
+    public:
+        virtual void foo() = 0;
+        char c = 'A';
+    };
+    
+    class Derived : public Abstract {
+    public:
+        int b = 42;
+        void foo() override {
+            cout << "Derived::foo" << endl;
+        }
+    };
+    
+    class Thirved : public Abstract {
+    public:
+        int x = 99;
+        void foo() override {
+            cout << "Thirved::foo" << endl;
+        }
+    };
 
-    std::thread threadone([&prom]()
-                          {
-                              std::this_thread::sleep_for(std::chrono::seconds(5));
-                              prom.set_value(makme  + 10); });
-    std::cout << "Waiting for the value to be set\n";
-    auto value = fut.get();
-    std::cout << "Value set: " << value << '\n';
-    threadone.join();
-    return 0;
-}
+
+
+
+
+
+
+    int main() {
+        Derived d;
+        Thirved t;
+    
+        Abstract* ptr1 = &d;
+        Abstract* ptr2 = &t;
+    
+        // Access vptrs
+        void** vptr_d = *(void***)&d;
+        void** vptr_t = *(void***)&t;
+    
+        cout << "Object d address:         " << &d << endl;
+        cout << "vptr for Derived:         " << vptr_d << endl;
+        cout << "Derived::vtable[0] (RTTI):" << vptr_d[0] << endl;
+        cout << "Derived::vtable[1] (foo): " << vptr_d[1] << endl;
+    
+        cout << "Object t address:         " << &t << endl;
+        cout << "vptr for Thirved:         " << vptr_t << endl;
+        cout << "Thirved::vtable[0] (RTTI):" << vptr_t[0] << endl;
+        cout << "Thirved::vtable[1] (foo): " << vptr_t[1] << endl;
+    
+        // Call virtual via vtable manually
+        using FnType = void(*)(Abstract*);
+        FnType dfunc = (FnType)vptr_d[1];
+        FnType tfunc = (FnType)vptr_t[1];
+    
+        dfunc(ptr1); // calls Derived::foo
+        tfunc(ptr2); // calls Thirved::foo
+    
+        return 0;
+    }

@@ -1,23 +1,28 @@
-#ifndef LIBONEHPP
-#define LIBONEHPP
-#include <iostream>
-#include <string>
-template <typename T, typename S>
-class LibOne
-{
-private:
-    S name;
-    T age;
+            #ifndef LIBONEHPP
+            #define LIBONEHPP
+            #include <iostream>
+            #include <string>
+#include "staticassert.hpp"
 
-public:
-    LibOne(T age, S name);
 
-    LibOne<T, S> getObject();
+            template <typename T, typename S>
+            class LibOne  : public  staticAssert
+            {
+            private:
+                S name;
+                T age;
 
-    S getName();
-};
+            public:
+                LibOne(T age, S name);
 
-// Explicit instantiation for the types used in the project
-template class LibOne<int, std::string>;
-template class LibOne<float, int>;
-#endif // ! LIBONEH
+                LibOne<T, S> getObject();
+
+                S getName();
+
+
+            };
+
+            // Explicit instantiation for the types used in the project
+            template class LibOne<int, std::string>;
+            template class LibOne<float, int>;
+ #endif // ! LIBONEH

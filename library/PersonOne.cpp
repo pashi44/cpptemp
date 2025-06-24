@@ -45,6 +45,8 @@ ExtendedBasePerson<T, S, K, J>::ExtendedBasePerson(const T &age, const S &name, 
 template <typename T, typename S, typename K, typename J>
 J ExtendedBasePerson<T, S, K, J>::getGender() const
 {
+
+
     return gender;
 }
 

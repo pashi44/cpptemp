@@ -6,11 +6,11 @@ set(CMAKE_CXX_STANDARD "${CMAKE_CXX_STANDARD} 20")
 set(CMAKE_CXX_FLAGS_DEBUG "-O0  -g  -gdwarf-4")
 set(CMAKE_BUILD_TYPE "DEBUG")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
-set(CMAKE_C_FLAGS "${CMKAE_C_FLAGS} -Werror ")
+set(CMAKE_C_FLAGS "${CMKAE_C_FLAGS} -Werror -lpthread")
 add_subdirectory(library)
 add_subdirectory(iterator)
-
-add_executable(TempOne "./TempOne.cpp")
+add_subdirectory(STLcontainers)
+add_executable(TempOne "./Temp.cpp")
 
 #if __cplusplus >= 202002L
     #pragma message("Compiling with C++20 or newer")
@@ -20,11 +20,16 @@ add_executable(TempOne "./TempOne.cpp")
     #pragma message("Compiling with C++14")
 #elif __cplusplus >= 201103L
     #pragma message("Compiling with C++11")
+#elif __cplusplus  >= 202002L 
+    #pragma message("compiling with c++ 20  speaclized with ranges")
+
     #else
+
+    
     #pragma message("Compiling with a pre-C++11 version")
 #endif
 
 
 
 # set(SOURCES "./TempOne.cpp" "")
-target_link_libraries(TempOne PUBLIC libOne iter)
+target_link_libraries(TempOne PUBLIC libOne iter stlcont)
