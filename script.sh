@@ -10,7 +10,7 @@ if [ ! -d "$BUILD_DIR" ]; then
     echo "Directory '$BUILD_DIR' does not exist. Creating it now."
     mkdir "$BUILD_DIR"
 else
-    echo "Directory '$BUILD_DIR' already exists."
+   echo  " '$BUILD_DIR' exists"
 fi
 
 # Change to the build directory
