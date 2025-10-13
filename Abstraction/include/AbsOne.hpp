@@ -12,22 +12,14 @@ protected:
     T value;
 
 public:
-    AbsOne() = default;
-
-    // Move constructor
+    AbsOne()=  default;    // Move constructor
     AbsOne(T&& k) : value(k) {
-        std::cout << "AbsOne move constructor: " << value << std::endl;
-        std::cout << "Address of moved-from value: " << static_cast<const void*>(&k) << std::endl;
-
-this->value  +=  "is a   good code ";
 
 
     }
 
     // Copy constructor (optional)
-    AbsOne(const T& k) : value(k) {
-        std::cout << "AbsOne copy constructor: " << value << std::endl;
-    }
+    AbsOne(const T& k) : value(k) {}
 
     virtual void showClassType() {
         std::cout << "Called AbsOne::showClassType()" << std::endl;
@@ -39,9 +31,7 @@ this->value  +=  "is a   good code ";
         return this->value;
     }
 
-    virtual ~AbsOne() {
-        std::cout << "AbsOne destructor: value = " << value << std::endl;
-    }
+    virtual ~AbsOne() =  default;
 };
 
 template <typename S, size_t N>
@@ -52,14 +42,17 @@ public:
     // if not we could have  copy initalized in the constructore of abse class
     
     AbsTwo(S&& k) : AbsOne<S, N>(std::forward<S>(k)) {
-        std::cout << "AbsTwo move constructor\n";
     }
 
     // Copy constructor (optional)
     AbsTwo(const S& k) : AbsOne<S, N>(k) {
-        std::cout << "AbsTwo copy constructor\n";
     }
+    
+void operator()(){
+std::cout << this->value  << std::endl;
 
+
+}
     void showClassType() override {
         std::cout << "Called AbsTwo::showClassType()" << std::endl;
     }
@@ -71,14 +64,13 @@ public:
     }
 
     virtual ~AbsTwo() {
-        std::cout << "AbsTwo destructor\n";
     }
 };
 
 
 
   template  <typename S , size_t K>
-  class  AbsThree  : public  AbsOne<S, 0>{
+  class  AbsThree  : public  AbsOne<S, K>{
 
 private:
 S membervariable;
@@ -98,7 +90,6 @@ AbsThree(S&& obj)  : AbsOne<S,K>(std::forward<S>(obj)){}
     }
 
 void GetNothing(){
-        std::cout << "Called AbsThree::GetNothing()" << std::endl;
 
 
         std::cout << this->value <<std::endl;
@@ -120,6 +111,6 @@ void GetNothing(){
 // Explicit template instantiations (optional)
 template class AbsOne<std::string, 0>;
 template class AbsTwo<std::string, 0>;
-template class AbsThree<std::string, 0>;
+template class AbsThree<int, 6>;
 
 }  // namespace Abstration
