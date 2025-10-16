@@ -42,6 +42,9 @@ public:
     T getObjectValue() const { return obja; }
 
     ~VectorOne() = default;
+
+  public:
+
 };
 
 #endif

@@ -1,27 +1,27 @@
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "Debug My Program",
-      "type": "cppdbg",
-      "request": "launch",
-      "program": "${workspaceFolder}/build/TempOne",  // Path to your executable
-      "args": [],                                     // Command-line arguments
-      "stopAtEntry": false,
-      "cwd": "${workspaceFolder}",                    // Working directory
-      "environment": [],
-      "externalConsole": false,                        // Set true if you want external terminal
-      "MIMode": "gdb",                                // Debugger mode
-      "setupCommands": [
+    "version": "0.2.0",
+    "configurations": [
         {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
+
+            
+            "name": "Debug TempOne",
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "Build TempOne",
+            "program": "${workspaceFolder}/build/TempOne",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole":   false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
         }
-      ],
-      "preLaunchTask": "build",                        // Optional: build task to run before debug
-      "miDebuggerPath": "/usr/bin/gdb",                // Path to gdb
-      "logging": { "engineLogging": false }
-    }
-  ]
+    ]
 }

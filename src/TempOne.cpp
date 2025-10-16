@@ -1,40 +1,38 @@
-    #include <iostream>
-    // #include "libOne.hpp"
-    #include <memory>
-    #include <list>
-    #include <string.h>
-    #include <stdlib.h>
-    #include <sys/types.h>
-    #include <unistd.h>
-    #include <sys/wait.h>
-#include <mutex>
-    #include "libOne.hpp"
-    #include <thread>
-    #include <chrono>
-    #include  "VectorOne.hpp"
-    #include <vector>
+        #include <iostream>
+        // #include "libOne.hpp"
+        #include <memory>
+        #include <list>
+        #include <string.h>
+        #include <stdlib.h>
+        #include <sys/types.h>
+        #include <unistd.h>
+        #include<algorithm>
+        #include <sys/wait.h>
+    #include <mutex>
+        // #include "libOne.hpp"
+        #include <thread>
+        #include <chrono>
+        #include  "VectorOne.hpp"
+        #include <vector>
+        #include <array>
 
-    using namespace std;
-    int main(){
-        pid_t pid;
-        int makme = 1296;
-        std::mutex mutexOne;
-        std::string riley = "simon riely";
+        using namespace std;
+        int main(){
 
-    vector<VectorOne<int>> vec = {
-        VectorOne<int>(makme),
-        VectorOne<int>(42),
-        VectorOne<int>(),
-        VectorOne<int>(99)
-    };
+            std::srand(std::time(0)); 
+            pid_t pid;
+            int makme = 1296;
+            int makma =   2048;
 
-    vec.resize(100); 
-    vec.emplace_back(VectorOne<int>(777));
+            std::mutex mutexOne;    
+            std::string riley = "simon riely";
+    
+    
 
-    cout << "Capacity: " << vec.capacity() << endl;
 
-    for (size_t i = 0; i < 4; ++i)
-        cout << vec[i].getObjectValue() << endl;
 
-    return 0;
-}
+
+
+
+        return 0;
+    }
