@@ -15,3 +15,45 @@ std::forward_list  and
    std::stack,
     std::queue, and
      std::priority_queue
+
+
+
+std::list is a doubly linked list
+
+
+
+associative containers 
+
+
+
+std::set
+• std::map
+• std::multiset
+• std::multimap
+
+
+
+std::set
+At its heart, a std::set container is a collection of unique elements where each element follows a
+strict order. You can think of it as a club where each member is distinct and all have a particular rank.
+The container ensures that no two elements
+
+
+std::unordered _set ;  consider   whosee ordering is not trivial but the fastraccess can can  be done with hashing 
+
+
+
+std::map is associative  order container  stores , key value pairs   ,ensuring uniquee  keys
+
+
+
+
+
+Feature        	std::set	                                               std::map
+Purpose      |     Stores unique keys only.	             |        Stores key-value pairs.
+Value storage	 | Only the key itself is stored.	           | Both key and associated value are stored.
+Duplicates	     | Not allowed.	                           | Keys are unique; values can repeat.
+Access	        |    Can check if a key exists, iterate in sorted order.	| Can access value via key (map[key]).
+Underlying structure   | 	Usually balanced BST (Red-Black tree).	 |   Usually balanced BST (Red-Black tree).
+Default sorting | 	Uses std::less<Key> (ascending).	 | Uses std::less<Key> on keys.
+Example	std::set<int> s; s.insert(10);	std::map<std::string,int> m; m["Alice"]=25;
