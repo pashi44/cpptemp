@@ -23,11 +23,16 @@ namespace Iterone
         IterOne(const T &ob1, const S &ob2) : obj1(ob1), obj2(ob2)
         {
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/dev
         void operator()(T &ob1, S &ob2)
         {
             obj1 = ob1;
             obj2 = ob2;
         }
+<<<<<<< HEAD
         S &getStringObject()
         {
             return obj2;
@@ -36,6 +41,10 @@ namespace Iterone
         ~IterOne()
         {
         }
+=======
+
+        ~IterOne() {}
+>>>>>>> origin/dev
     };
 }
 #endif

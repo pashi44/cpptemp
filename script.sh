@@ -34,4 +34,7 @@ else
     echo "Build failed. Check the output for errors."
     exit 1
 fi
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/dev
