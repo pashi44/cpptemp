@@ -24,14 +24,19 @@ namespace Iterone
         {
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> origin/dev
+=======
+
+>>>>>>> dev
         void operator()(T &ob1, S &ob2)
         {
             obj1 = ob1;
             obj2 = ob2;
         }
+<<<<<<< HEAD
 <<<<<<< HEAD
         S &getStringObject()
         {
@@ -45,6 +50,10 @@ namespace Iterone
 
         ~IterOne() {}
 >>>>>>> origin/dev
+=======
+
+        ~IterOne() {}
+>>>>>>> dev
     };
 }
 #endif

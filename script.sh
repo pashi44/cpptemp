@@ -35,6 +35,9 @@ else
     exit 1
 fi
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> origin/dev
+=======
+>>>>>>> dev
