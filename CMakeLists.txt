@@ -16,6 +16,6 @@ add_subdirectory(library)
 add_subdirectory(referenceLibrary)
 add_subdirectory(iterator)
 
-add_executable(TempOne "./TempOne.cpp")
+add_executable(TempOne   ${CMAKE_CURRENT_SOURCE_DIR}/src/TempOne.cpp)
 target_link_libraries(TempOne PUBLIC libOne reflib thre ite)
 target_link_libraries(TempOne INTERFACE Threads::Threads)

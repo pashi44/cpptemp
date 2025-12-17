@@ -11,6 +11,7 @@ if [ ! -d "$BUILD_DIR" ]; then
     mkdir "$BUILD_DIR"
 else
     echo "Directory '$BUILD_DIR' already exists."
+    rm -rf "$BUILD_DIR"/*  >> /dev/null 2>&1
 fi
 
 # Change to the build directory
